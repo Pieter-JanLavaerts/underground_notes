@@ -1,9 +1,10 @@
 #!/bin/bash
+mkdir -p pdfpages
+mkdir -p pngpages
+mkdir -p namedpngs
 echo generate page png $1 $2 $3 $4
-pdftk $1 cat $(($2 + $4)) output $2.pdf
-pdftoppm -png $2.pdf > pages/$2.png
+pdftk $1 cat $(($2 + $4)) output pdfpages/$2.pdf
+pdftoppm -png pdfpages/$2.pdf > pngpages/$2.png
 page=$(printf "%03d" $2)
-mkdir -p pages
-mkdir -p named
-cp pages/$2.png "named/$page $3.png"
+cp pngpages/$2.png "namedpngs/$page $3.png"
 
