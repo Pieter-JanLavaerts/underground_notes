@@ -18,9 +18,13 @@ my_model = genanki.Model(
   ])
 
 
+note_index = 0
 def create_note(filename):
+    global note_index
+    note_index += 1
     return genanki.Note(
             model=my_model,
+            due=note_index,
             fields=["".join(filename.replace("_", " ").split(".")[:-1]), f'<img src="{filename}" />'])
 
 
@@ -39,4 +43,3 @@ if __name__ == '__main__':
     my_package.media_files = filenames
     
     my_package.write_to_file('output.apkg')
-
