@@ -1,8 +1,9 @@
 #!/bin/bash
-book="Basic Mathematics (Serge Lang).pdf"
-pdftk $book cat $(($1 + $3)) output $1.pdf
-pdftoppm -png $1.pdf > pages/$1.png
-page=$(printf "%03d" $1)
-mkdir pages
-cp pages/$1.png "named/$page $2.png"
+echo generate page png $1 $2 $3 $4
+pdftk $1 cat $(($2 + $4)) output $2.pdf
+pdftoppm -png $2.pdf > pages/$2.png
+page=$(printf "%03d" $2)
+mkdir -p pages
+mkdir -p named
+cp pages/$2.png "named/$page $3.png"
 
