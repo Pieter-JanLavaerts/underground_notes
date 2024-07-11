@@ -5,5 +5,8 @@ for l in open(argv[1]):
     ws = l.split(",")
     ts = ws[1:]
     if len(ts) > 1:
-        print(l)
+        for t in ts:
+            print(ws[0] + "," + t.replace("\n",""))
+    else:
+        print(l, end="")
 
