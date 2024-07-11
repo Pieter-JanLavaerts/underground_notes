@@ -17,13 +17,10 @@ my_model = genanki.Model(
     },
   ])
 
-note_index = 0
+
 def create_note(filename):
-    global note_index
-    note_index += 1
     return genanki.Note(
             model=my_model,
-            sort_field=note_index,
             fields=["".join(filename.replace("_", " ").split(".")[:-1]), f'<img src="{filename}" />'])
 
 
